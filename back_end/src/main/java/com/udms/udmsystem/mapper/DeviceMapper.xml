@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.udms.udmsystem.mapper.DeviceMapper">
+    <select id="getRealtimeDeviceData" resultType="com.udms.udmsystem.pojo.DeviceDataVO">
+        select
+            `gid` as gid,
+            avg(`humidity`) as humidity,
+            avg(`wind`) as wind,
+            avg(`temperature`) as temperature
+        from
+            tb_device
+        group by `gid`;
+    </select>
+</mapper>

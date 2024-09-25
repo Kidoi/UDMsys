@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.udms.udmsystem.mapper.CommentMapper">
+    <select id="getComments" resultType="com.udms.udmsystem.pojo.CommentVO">
+        SELECT
+        tb_comments.id,
+        tb_comments.gid,
+        tb_comments.time,
+        tb_comments.details,
+        tb_user.name AS author,
+        tb_user.avatar
+        FROM
+        tb_comments
+        LEFT JOIN tb_user ON tb_comments.uid = tb_user.id
+        ${ew.customSqlSegment}
+    </select>
+</mapper>
